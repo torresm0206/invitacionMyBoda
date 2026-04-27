@@ -6,68 +6,72 @@
   <title>Invitación | José Manuel y Zayr</title>
 
   <style>
-    /* ===== ESTILOS GENERALES DE TODA LA PÁGINA ===== */
+    /* ======================================================
+       ESTILOS GENERALES
+    ====================================================== */
     body {
-      margin: 0; /* Quita los márgenes por defecto del navegador */
-      font-family: Georgia, "Times New Roman", serif; /* Tipo de letra elegante */
-      background-color: #f8f3ee; /* Color de fondo */
-      color: #4b3a2f; /* Color general del texto */
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background-color: #f8f3ee;
+      color: #4b3a2f;
     }
 
-    /* ===== CONTENEDOR PRINCIPAL ===== */
-    .portada {
-      min-height: 100vh; /* Hace que ocupe toda la altura de la pantalla */
-      display: flex; /* Activa flexbox */
-      justify-content: center; /* Centra horizontalmente */
-      align-items: center; /* Centra verticalmente */
-      padding: 20px; /* Espacio interno para que no pegue a los bordes */
+    * {
       box-sizing: border-box;
     }
 
-    /* ===== TARJETA CENTRAL ===== */
+    /* ======================================================
+       PANTALLAS
+       .pantalla = bloque que ocupa toda la pantalla
+    ====================================================== */
+    .pantalla {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Clase para ocultar elementos */
+    .oculto {
+      display: none;
+    }
+
+    /* ======================================================
+       TARJETA DE LA PRIMERA PANTALLA
+    ====================================================== */
     .tarjeta {
       width: 100%;
-      max-width: 420px; /* Ancho máximo en celular y escritorio */
+      max-width: 420px;
       background-color: white;
-      border-radius: 30px; /* Bordes redondeados */
+      border-radius: 30px;
       padding: 30px 20px;
-      text-align: center; /* Centra el texto */
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra suave */
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
-    /* ===== TEXTO PEQUEÑO SUPERIOR ===== */
     .subtitulo {
       font-size: 16px;
-      letter-spacing: 4px; /* Espaciado entre letras */
+      letter-spacing: 4px;
       color: #8b7a6b;
       margin-bottom: 15px;
-      text-transform: uppercase; /* Convierte a mayúsculas */
+      text-transform: uppercase;
     }
 
-    /* ===== NOMBRES PRINCIPALES ===== */
-    .nombres {
+    .nombres-principales {
       font-size: 42px;
       line-height: 1.1;
       margin-bottom: 25px;
     }
 
-    /* ===== IMAGEN DEL SOBRE ===== */
     .sobre {
       width: 100%;
-      max-width: 260px; /* Limita el tamaño del sobre */
+      max-width: 260px;
       display: block;
-      margin: 0 auto 25px auto; /* Centra la imagen */
+      margin: 0 auto 25px auto;
       border-radius: 12px;
     }
 
-    /* ===== FECHA ===== */
-    .fecha {
-      font-size: 18px;
-      letter-spacing: 1px;
-      margin-top: 10px;
-    }
-
-    /* ===== TEXTO SECUNDARIO ===== */
     .texto-secundario {
       font-size: 14px;
       color: #8b7a6b;
@@ -75,36 +79,336 @@
       text-transform: uppercase;
       letter-spacing: 3px;
     }
+
+    .fecha {
+      font-size: 18px;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+
+    /* ======================================================
+       BOTÓN PARA ABRIR LA INVITACIÓN
+    ====================================================== */
+    .boton-abrir {
+      background-color: #c8a97e;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .boton-abrir:hover {
+      background-color: #b89463;
+    }
+
+    /* ======================================================
+       SEGUNDA PANTALLA
+    ====================================================== */
+    .contenido-invitacion {
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      padding: 10px 10px 40px 10px;
+    }
+
+    .bienvenida {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .texto-cuenta {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    /* ======================================================
+       CUENTA REGRESIVA EN UNA SOLA LÍNEA
+    ====================================================== */
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      max-width: 700px;
+      margin: 0 auto 55px auto;
+    }
+
+    .count-item {
+      text-align: center;
+    }
+
+    .count-box {
+      border: 2px solid #8b8b8b;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 10px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 34px;
+      background-color: white;
+    }
+
+    .count-label {
+      font-size: 18px;
+    }
+
+    /* ======================================================
+       TEXTOS CENTRALES
+    ====================================================== */
+    .titulo-boda {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .nombres-centro {
+      font-size: 24px;
+      line-height: 1.4;
+      margin-bottom: 30px;
+    }
+
+    /* ======================================================
+       IMAGEN CENTRAL DECORADA
+    ====================================================== */
+    .imagen-central {
+      width: 180px;
+      height: 220px;
+      margin: 0 auto 30px auto;
+      border: 3px solid #000;
+      border-radius: 50% / 40%;
+      overflow: hidden;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .imagen-central img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ======================================================
+       TEXTO BAUTIZO
+    ====================================================== */
+    .texto-bautizo {
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    /* ======================================================
+       RESPONSIVE PARA TELÉFONO
+    ====================================================== */
+    @media (max-width: 700px) {
+      .countdown {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      .count-box {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+      }
+
+      .count-label {
+        font-size: 16px;
+      }
+
+      .bienvenida {
+        font-size: 18px;
+      }
+
+      .texto-cuenta {
+        font-size: 16px;
+      }
+
+      .titulo-boda,
+      .texto-bautizo {
+        font-size: 18px;
+      }
+
+      .nombres-centro {
+        font-size: 20px;
+      }
+
+      .imagen-central {
+        width: 160px;
+        height: 200px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- CONTENEDOR PRINCIPAL -->
-  <section class="portada">
+  <!-- =====================================================
+       AUDIO
+       IMPORTANTE:
+       Cambia la ruta si tu archivo MP3 tiene otro nombre.
+  ====================================================== -->
+  <audio id="musica" loop>
+    <source src="assets/all-of-me.mp3" type="audio/mpeg">
+  </audio>
 
-    <!-- TARJETA CENTRAL -->
+  <!-- =====================================================
+       PRIMERA PANTALLA
+       ESTA ES LA QUE SE VE AL ABRIR EL ENLACE
+  ====================================================== -->
+  <section class="pantalla" id="pantalla1">
     <div class="tarjeta">
 
-      <!-- TEXTO PEQUEÑO SUPERIOR -->
       <div class="subtitulo">Nuestra boda y bautizo</div>
 
-      <!-- NOMBRES -->
-      <div class="nombres">
+      <div class="nombres-principales">
         José Manuel <br> &amp; Zayr
       </div>
 
-      <!-- IMAGEN DEL SOBRE -->
-      <!-- Cambia la ruta si tu imagen tiene otro nombre o está en otra carpeta -->
-      <img src="assets/sobre.jpeg" alt="Sobre de invitación" class="sobre">
+      <!-- Cambia el nombre de la imagen si hace falta -->
+      <img src="assets/Sobre.jpeg" alt="Sobre de invitación" class="sobre">
 
-      <!-- TEXTO PEQUEÑO DE FECHA -->
       <div class="texto-secundario">Sábado</div>
-
-      <!-- FECHA -->
       <div class="fecha">09 de mayo de 2026</div>
+
+      <!-- BOTÓN PARA ABRIR -->
+      <button class="boton-abrir" id="btnAbrir">
+        Presione para abrir la invitación
+      </button>
 
     </div>
   </section>
+
+  <!-- =====================================================
+       SEGUNDA PANTALLA
+       INICIA OCULTA
+  ====================================================== -->
+  <section class="pantalla oculto" id="pantalla2">
+    <div class="contenido-invitacion">
+
+      <div class="bienvenida">Un mensaje de Bienvenida</div>
+
+      <div class="texto-cuenta">
+        La cuenta regresiva, en días, horas, minutos y segundos
+      </div>
+
+      <!-- CUENTA REGRESIVA -->
+      <div class="countdown">
+        <div class="count-item">
+          <div class="count-box" id="dias">0</div>
+          <div class="count-label">Días</div>
+        </div>
+
+        <div class="count-item">
+          <div class="count-box" id="horas">0</div>
+          <div class="count-label">Horas</div>
+        </div>
+
+        <div class="count-item">
+          <div class="count-box" id="minutos">0</div>
+          <div class="count-label">Minutos</div>
+        </div>
+
+        <div class="count-item">
+          <div class="count-box" id="segundos">0</div>
+          <div class="count-label">Segundos</div>
+        </div>
+      </div>
+
+      <div class="titulo-boda">Nuestra Boda</div>
+
+      <div class="nombres-centro">
+        Zayr <br>
+        &amp; <br>
+        José Manuel
+      </div>
+
+      <!-- IMAGEN CENTRAL -->
+      <!-- Aquí puedes usar una foto decorada o una foto de ustedes -->
+      <div class="imagen-central">
+        <img src="assets/foto3.jpeg" alt="Foto central">
+      </div>
+
+      <div class="texto-bautizo">
+        Y el Bautizo de Nuestra Hija <br>
+        Melanie Sofía <br>
+        Torres Milán
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    /* =====================================================
+       OBTENEMOS LOS ELEMENTOS DEL HTML
+    ====================================================== */
+    const pantalla1 = document.getElementById("pantalla1");
+    const pantalla2 = document.getElementById("pantalla2");
+    const btnAbrir = document.getElementById("btnAbrir");
+    const musica = document.getElementById("musica");
+
+    const dias = document.getElementById("dias");
+    const horas = document.getElementById("horas");
+    const minutos = document.getElementById("minutos");
+    const segundos = document.getElementById("segundos");
+
+    /* =====================================================
+       FECHA DEL EVENTO
+       AQUÍ PUEDES CAMBIAR LA FECHA Y HORA
+    ====================================================== */
+    const fechaEvento = new Date("2026-05-09T11:00:00-06:00").getTime();
+
+    /* =====================================================
+       FUNCIÓN PARA ACTUALIZAR LA CUENTA REGRESIVA
+    ====================================================== */
+    function actualizarCuenta() {
+      const ahora = new Date().getTime();
+      const diferencia = fechaEvento - ahora;
+
+      if (diferencia <= 0) {
+        dias.textContent = "0";
+        horas.textContent = "0";
+        minutos.textContent = "0";
+        segundos.textContent = "0";
+        return;
+      }
+
+      const d = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diferencia / (1000 * 60)) % 60);
+      const s = Math.floor((diferencia / 1000) % 60);
+
+      dias.textContent = d;
+      horas.textContent = h;
+      minutos.textContent = m;
+      segundos.textContent = s;
+    }
+
+    /* Ejecuta la cuenta regresiva una vez al inicio */
+    actualizarCuenta();
+
+    /* Se actualiza cada segundo */
+    setInterval(actualizarCuenta, 1000);
+
+    /* =====================================================
+       AL PRESIONAR EL BOTÓN:
+       1. SE OCULTA LA PRIMERA PANTALLA
+       2. SE MUESTRA LA SEGUNDA
+       3. SE INTENTA REPRODUCIR LA MÚSICA
+    ====================================================== */
+    btnAbrir.addEventListener("click", async function () {
+      pantalla1.classList.add("oculto");
+      pantalla2.classList.remove("oculto");
+
+      try {
+        await musica.play();
+      } catch (error) {
+        console.log("El navegador bloqueó la reproducción automática.");
+      }
+    });
+  </script>
 
 </body>
 </html>
