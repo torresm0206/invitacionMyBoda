@@ -362,6 +362,232 @@
         font-size: 15px;
       }
     }
+
+    /* ======================================================
+   SEGUNDA PANTALLA ESTILO PREMIUM
+====================================================== */
+.pantalla-estilo-premium{
+  padding: 14px;
+  align-items: stretch;
+}
+
+.premium-card{
+  width: 100%;
+  max-width: 430px;
+  min-height: 92vh;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  background: #000;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.20);
+}
+
+/* Foto de fondo */
+.premium-fondo{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Oscurece la foto ligeramente */
+.premium-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.18) 0%,
+    rgba(0,0,0,0.22) 40%,
+    rgba(0,0,0,0.38) 100%
+  );
+  z-index: 1;
+}
+
+/* Franja diagonal translúcida como en la referencia */
+.premium-diagonal{
+  position: absolute;
+  top: -5%;
+  left: -18%;
+  width: 70%;
+  height: 120%;
+  background: rgba(255,255,255,0.18);
+  transform: rotate(12deg);
+  z-index: 2;
+  backdrop-filter: blur(1px);
+}
+
+/* Contenido encima */
+.premium-contenido{
+  position: relative;
+  z-index: 3;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding: 90px 20px 150px 20px;
+  color: white;
+}
+
+/* Adorno pequeño */
+.premium-adorno{
+  font-size: 28px;
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+
+/* Caja fina de nombres */
+.premium-nombres-box{
+  border: 1px solid rgba(255,255,255,0.72);
+  padding: 16px 18px 14px 18px;
+  width: 100%;
+  max-width: 300px;
+  background: rgba(0,0,0,0.08);
+}
+
+.premium-nombres{
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.premium-subtexto{
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.94;
+}
+
+/* Texto del bautizo */
+.premium-bautizo{
+  margin-top: 18px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.94);
+}
+
+/* Cuenta regresiva abajo */
+.premium-countdown{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34px;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 0 18px;
+  text-align: center;
+  color: white;
+}
+
+.premium-count-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.premium-count-num{
+  font-size: 34px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 6px;
+  color: white;
+}
+
+.premium-count-label{
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  opacity: 0.92;
+}
+
+/* Barra de música más discreta */
+.barra-musica{
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  padding: 8px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  backdrop-filter: blur(8px);
+}
+
+.musica-contenido{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boton-musica{
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.estado-musica{
+  color: white;
+  font-size: 14px;
+  padding-right: 6px;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 700px){
+  .premium-card{
+    min-height: 90vh;
+    border-radius: 28px;
+  }
+
+  .premium-contenido{
+    padding: 70px 16px 140px 16px;
+  }
+
+  .premium-nombres-box{
+    max-width: 280px;
+    padding: 14px 14px 12px 14px;
+  }
+
+  .premium-nombres{
+    font-size: 28px;
+  }
+
+  .premium-subtexto{
+    font-size: 11px;
+    letter-spacing: 1.2px;
+  }
+
+  .premium-bautizo{
+    font-size: 14px;
+  }
+
+  .premium-countdown{
+    bottom: 24px;
+    gap: 4px;
+    padding: 0 12px;
+  }
+
+  .premium-count-num{
+    font-size: 28px;
+  }
+
+  .premium-count-label{
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+}
   </style>
 </head>
 <body>
@@ -400,58 +626,63 @@
   </section>
 
   <!-- SEGUNDA PANTALLA -->
-  <section class="pantalla oculto" id="pantalla2">
-    <div class="contenido-invitacion">
-      <div class="bloque-principal">
+  <section class="pantalla oculto pantalla-estilo-premium" id="pantalla2">
+  <div class="premium-card">
 
-        <div class="bienvenida">¡Queremos celebrar contigo!</div>
+    <!-- Foto principal de fondo -->
+    <img src="assets/foto2.jpeg" alt="Foto principal" class="premium-fondo">
 
-        <div class="countdown">
-          <div class="count-item">
-            <div class="count-box" id="dias">0</div>
-            <div class="count-label">Días</div>
-          </div>
+    <!-- Capa oscura suave -->
+    <div class="premium-overlay"></div>
 
-          <div class="count-item">
-            <div class="count-box" id="horas">0</div>
-            <div class="count-label">Horas</div>
-          </div>
+    <!-- Capa diagonal translúcida -->
+    <div class="premium-diagonal"></div>
 
-          <div class="count-item">
-            <div class="count-box" id="minutos">0</div>
-            <div class="count-label">Minutos</div>
-          </div>
+    <!-- Contenido principal -->
+    <div class="premium-contenido">
 
-          <div class="count-item">
-            <div class="count-box" id="segundos">0</div>
-            <div class="count-label">Segundos</div>
-          </div>
+      <div class="premium-adorno">✦</div>
+
+      <div class="premium-nombres-box">
+        <div class="premium-nombres">
+          José Manuel &amp; Zayr
         </div>
-
-        <div class="titulo-boda">Nuestra Boda</div>
-
-        <div class="nombres-centro">
-          Zayr <br>
-          <span class="ampersand">&amp;</span> <br>
-          José Manuel
+        <div class="premium-subtexto">
+          09.05.2026 &nbsp; | &nbsp; Nuestra boda y bautizo
         </div>
+      </div>
 
-        <div class="marco-imagen">
-          <div class="imagen-central">
-            <img src="assets/foto3.jpeg" alt="Foto central">
-          </div>
-        </div>
+      <div class="premium-bautizo">
+        Melanie Sofía Torres Milán
+      </div>
 
-        <div class="texto-bautizo">
-          <span>Y el Bautizo de Nuestra Hija</span><br>
-          Melanie Sofía <br>
-          Torres Milán
-        </div>
+    </div>
 
+    <!-- Cuenta regresiva abajo -->
+    <div class="premium-countdown">
+      <div class="premium-count-item">
+        <div class="premium-count-num" id="dias">0</div>
+        <div class="premium-count-label">DÍAS</div>
+      </div>
+
+      <div class="premium-count-item">
+        <div class="premium-count-num" id="horas">0</div>
+        <div class="premium-count-label">HORAS</div>
+      </div>
+
+      <div class="premium-count-item">
+        <div class="premium-count-num" id="minutos">0</div>
+        <div class="premium-count-label">MINUTOS</div>
+      </div>
+
+      <div class="premium-count-item">
+        <div class="premium-count-num" id="segundos">0</div>
+        <div class="premium-count-label">SEGUNDOS</div>
       </div>
     </div>
-  </section>
 
+  </div>
+</section>
   <script>
     /* ======================================================
        ELEMENTOS DEL HTML
