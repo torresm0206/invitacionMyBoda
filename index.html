@@ -1,512 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zayr & José Manuel | Boda y Bautizo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación | José Manuel y Zayr</title>
+
   <style>
-    :root{
-      --bg:#f6efe6;
-      --card:rgba(255,255,255,.82);
-      --text:#4c3b30;
-      --muted:#78675a;
-      --accent:#c8a97e;
-      --accent-dark:#9f7e54;
-      --line:rgba(122,98,74,.16);
-      --shadow:0 18px 44px rgba(95,72,52,.14);
-      --radius:28px;
+    /* ===== ESTILOS GENERALES DE TODA LA PÁGINA ===== */
+    body {
+      margin: 0; /* Quita los márgenes por defecto del navegador */
+      font-family: Georgia, "Times New Roman", serif; /* Tipo de letra elegante */
+      background-color: #f8f3ee; /* Color de fondo */
+      color: #4b3a2f; /* Color general del texto */
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Georgia,"Times New Roman",serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at top, rgba(200,169,126,.14), transparent 34%),
-        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+
+    /* ===== CONTENEDOR PRINCIPAL ===== */
+    .portada {
+      min-height: 100vh; /* Hace que ocupe toda la altura de la pantalla */
+      display: flex; /* Activa flexbox */
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente */
+      padding: 20px; /* Espacio interno para que no pegue a los bordes */
+      box-sizing: border-box;
     }
-    .container{width:min(980px, calc(100% - 28px)); margin:0 auto}
-    .overlay{
-      position:fixed; inset:0; z-index:50;
-      display:grid; place-items:center;
-      background:
-        linear-gradient(180deg, rgba(52,37,27,.45), rgba(52,37,27,.72)),
-        url('assets/foto3.jpeg') center/contain no-repeat;
-      padding:24px;
+
+    /* ===== TARJETA CENTRAL ===== */
+    .tarjeta {
+      width: 100%;
+      max-width: 420px; /* Ancho máximo en celular y escritorio */
+      background-color: white;
+      border-radius: 30px; /* Bordes redondeados */
+      padding: 30px 20px;
+      text-align: center; /* Centra el texto */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra suave */
     }
-    .overlay-card{
-      max-width:720px; width:100%;
-      background:rgba(255,255,255,.13);
-      border:1px solid rgba(255,255,255,.25);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-      border-radius:36px;
-      padding:28px;
-      text-align:center;
-      color:#fffaf5;
+
+    /* ===== TEXTO PEQUEÑO SUPERIOR ===== */
+    .subtitulo {
+      font-size: 16px;
+      letter-spacing: 4px; /* Espaciado entre letras */
+      color: #8b7a6b;
+      margin-bottom: 15px;
+      text-transform: uppercase; /* Convierte a mayúsculas */
     }
-    .overlay-card h1{
-      margin:0 0 10px;
-      font-size:clamp(2rem,5vw,4rem);
-      line-height:1.08;
+
+    /* ===== NOMBRES PRINCIPALES ===== */
+    .nombres {
+      font-size: 42px;
+      line-height: 1.1;
+      margin-bottom: 25px;
     }
-    .overlay-card p{
-      margin:0 auto 20px;
-      max-width:620px;
-      line-height:1.7;
-      font-size:1.03rem;
+
+    /* ===== IMAGEN DEL SOBRE ===== */
+    .sobre {
+      width: 100%;
+      max-width: 260px; /* Limita el tamaño del sobre */
+      display: block;
+      margin: 0 auto 25px auto; /* Centra la imagen */
+      border-radius: 12px;
     }
-    .open-btn, .btn{
-      display:inline-block;
-      border:none;
-      text-decoration:none;
-      cursor:pointer;
-      border-radius:999px;
-      padding:14px 20px;
-      font-size:.98rem;
-      box-shadow:0 10px 26px rgba(159,125,79,.18);
+
+    /* ===== FECHA ===== */
+    .fecha {
+      font-size: 18px;
+      letter-spacing: 1px;
+      margin-top: 10px;
     }
-    .open-btn, .btn.primary{
-      color:white;
-      background:linear-gradient(180deg, var(--accent), var(--accent-dark));
-    }
-    .btn.secondary{
-      color:var(--text);
-      background:rgba(255,255,255,.82);
-    }
-    .hero{
-      min-height:100svh;
-      display:grid;
-      place-items:center;
-      padding:28px 0 34px;
-    }
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.74));
-      border:1px solid rgba(255,255,255,.55);
-      box-shadow:var(--shadow);
-      border-radius:36px;
-      padding:18px;
-      backdrop-filter: blur(10px);
-    }
-    .cover{
-      min-height:76svh;
-      border-radius:28px;
-      padding:26px;
-      display:grid;
-      align-content:end;
-      color:#fffaf4;
-      background:
-        linear-gradient(180deg, rgba(74,59,47,.12), rgba(74,59,47,.62)),
-        url('assets/foto2.jpeg') center/cover;
-    }
-    .pill{
-      display:inline-block;
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.35);
-      background:rgba(255,255,255,.12);
-      font-size:.9rem;
-      letter-spacing:.04em;
-      margin-bottom:14px;
-    }
-    h1,h2,h3,p{margin:0}
-    .names{
-      font-size:clamp(2.2rem,5vw,4.5rem);
-      line-height:1.06;
-      margin-bottom:12px;
-    }
-    .subtitle{
-      font-size:clamp(1rem,2.3vw,1.42rem);
-      opacity:.96;
-      margin-bottom:16px;
-    }
-    .intro{
-      max-width:680px;
-      line-height:1.8;
-      color:rgba(255,250,244,.95);
-      font-size:1.03rem;
-    }
-    .quick-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:24px;
-    }
-    section{padding:18px 0}
-    .section-card{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.62);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:26px;
-      backdrop-filter: blur(8px);
-    }
-    .section-title{
-      font-size:clamp(1.5rem,3vw,2.2rem);
-      margin-bottom:10px;
-    }
-    .section-text{
-      color:var(--muted);
-      line-height:1.8;
-      font-size:1.02rem;
-    }
-    .grid{display:grid; gap:18px}
-    .details-grid{
-      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-      margin-top:20px;
-    }
-    .detail{
-      padding:20px;
-      border-radius:22px;
-      background:rgba(255,255,255,.72);
-      border:1px solid var(--line);
-      text-align:center;
-    }
-    .label{
-      display:block;
-      font-size:.9rem;
-      color:var(--accent-dark);
-      margin-bottom:8px;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-    }
-    .value{
-      font-size:1.08rem;
-      line-height:1.55;
-    }
-    .timeline{display:grid; gap:14px; margin-top:18px}
-    .timeline-item{
-      display:grid;
-      grid-template-columns:110px 1fr;
-      gap:14px;
-      align-items:start;
-      padding:16px;
-      border-radius:20px;
-      background:rgba(255,255,255,.7);
-      border:1px solid var(--line);
-    }
-    .time{font-weight:bold; color:var(--accent-dark)}
-    .countdown{
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:12px;
-      margin-top:18px;
-    }
-    .count-box{
-      padding:18px 10px;
-      text-align:center;
-      border-radius:22px;
-      background:rgba(255,255,255,.75);
-      border:1px solid var(--line);
-    }
-    .count-num{font-size:clamp(1.6rem,4vw,2.4rem); font-weight:bold}
-    .count-label{color:var(--muted); font-size:.92rem; margin-top:4px}
-    .gallery{
-      margin-top:18px;
-      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-    }
-    .photo{
-      aspect-ratio:4/5;
-      border-radius:24px;
-      overflow:hidden;
-      position:relative;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(255,255,255,.55);
-      background:#efe5d7;
-    }
-    .photo img{
-      width:100%; height:100%; object-fit:cover; display:block;
-    }
-    .photo span{
-      position:absolute;
-      inset:auto 12px 12px 12px;
-      background:rgba(255,255,255,.84);
-      color:var(--text);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:.92rem;
-      text-align:center;
-    }
-    .footer{
-      text-align:center;
-      color:var(--muted);
-      padding:10px 0 40px;
-    }
-    .music-bar{
-      position:sticky;
-      top:10px;
-      z-index:15;
-      display:flex;
-      justify-content:center;
-      padding:10px 0 0;
-    }
-    .music-control{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.9);
-      box-shadow:var(--shadow);
-      border:1px solid rgba(255,255,255,.62);
-      font-size:.95rem;
-    }
-    @media (max-width:700px){
-      .timeline-item{grid-template-columns:1fr}
-      .countdown{grid-template-columns:repeat(2,1fr)}
-      .cover{min-height:70svh; padding:18px}
-      .overlay-card{padding:22px}
+
+    /* ===== TEXTO SECUNDARIO ===== */
+    .texto-secundario {
+      font-size: 14px;
+      color: #8b7a6b;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
     }
   </style>
 </head>
 <body>
-  <div class="overlay" id="welcomeOverlay">
-    <div class="overlay-card">
-      <div class="pill">Boda & Bautizo · 09 de mayo de 2026</div>
-      <h1>Zayr & José Manuel</h1>
-      <p>
-        Con la bendición de Dios y Nuestras Familias, queremos compartir contigo la celebración de nuestro Matrimonio
-        y el Bautizo de nuestra hija. Toca el botón para abrir la invitación.
-      </p>
-      <button class="open-btn" id="enterBtn">Abrir invitación</button>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <section class="portada">
+
+    <!-- TARJETA CENTRAL -->
+    <div class="tarjeta">
+
+      <!-- TEXTO PEQUEÑO SUPERIOR -->
+      <div class="subtitulo">Nuestra boda y bautizo</div>
+
+      <!-- NOMBRES -->
+      <div class="nombres">
+        José Manuel <br> &amp; Zayr
+      </div>
+
+      <!-- IMAGEN DEL SOBRE -->
+      <!-- Cambia la ruta si tu imagen tiene otro nombre o está en otra carpeta -->
+      <img src="assets/sobre.jpeg" alt="Sobre de invitación" class="sobre">
+
+      <!-- TEXTO PEQUEÑO DE FECHA -->
+      <div class="texto-secundario">Sábado</div>
+
+      <!-- FECHA -->
+      <div class="fecha">09 de mayo de 2026</div>
+
     </div>
-  </div>
+  </section>
 
-  <div class="music-bar">
-    <div class="music-control">
-      <button class="btn primary" id="musicBtn" type="button">❚❚ Pausar música</button>
-      <span id="musicStatus">Reproduciendo</span>
-    </div>
-  </div>
-
-  <header class="hero">
-    <div class="container hero-card">
-      <div class="cover">
-        <span class="pill">Boda & Bautizo · 09 de mayo de 2026</span>
-        <h1 class="names">José Manuel<br>&amp; Zayr</h1>
-        <p class="subtitle">Junto con el bautizo de nuestra pequña Melanie Sofía Torres Milán.</p>
-        <p class="intro">
-          Con alegría en el corazón y bajo la bendición de Dios, queremos compartir contigo un día muy especial:
-          la celebración de nuestro matrimonio y el bautizo de nuestra hija.
-          Nos encantaría que nos acompañaras a vivir este momento de fe, amor y familia.
-        </p>
-        <div class="quick-actions">
-          <a class="btn primary" href="#detalles">Ver detalles</a>
-          <a class="btn secondary" href="#galeria">Ver fotos</a>
-          <a class="btn secondary" href="#ubicaciones">Ver ubicaciones</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <section>
-      <div class="section-card">
-        <h2 class="section-title">Cuenta regresiva</h2>
-        <p class="section-text">Cada día nos acerca a este momento que soñamos compartir contigo.</p>
-        <div class="countdown" id="countdown">
-          <div class="count-box"><div class="count-num" id="days">0</div><div class="count-label">Días</div></div>
-          <div class="count-box"><div class="count-num" id="hours">0</div><div class="count-label">Horas</div></div>
-          <div class="count-box"><div class="count-num" id="minutes">0</div><div class="count-label">Minutos</div></div>
-          <div class="count-box"><div class="count-num" id="seconds">0</div><div class="count-label">Segundos</div></div>
-        </div>
-      </div>
-    </section>
-    
-    <section id="detalles">
-      <div class="section-card">
-        <h2 class="section-title">Detalles del evento</h2>
-        <p class="section-text">
-          Con la bendición de Dios y en compañía de nuestras familias, te invitamos a celebrar nuestra boda y el bautizo de nuestra hija.
-        </p>
-        <div class="grid details-grid">
-          <div class="detail">
-            <span class="label">Fecha</span>
-            <div class="value">Sábado 09 de mayo de 2026</div>
-          </div>
-          <div class="detail">
-            <span class="label">Ceremonia religiosa</span>
-            <div class="value">11:00 a.m.<br>Parroquia de San Antonio de Padua</div>
-          </div>
-          <div class="detail">
-            <span class="label">Evento social</span>
-            <div class="value">3:00 p.m.<br>Calle Libramiento Alpanocan</div>
-          </div>
-          <div class="detail">
-            <span class="label">Celebramos</span>
-            <div class="value">Nuestra boda y el bautizo de nuestra pequeña Sofi.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-card">
-        <h2 class="section-title">Programa del día</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="time">11:00 a.m.</div>
-            <div>
-              <strong>Misa: Boda y Bautizo</strong>
-              <p class="section-text">Parroquia de San Antonio de Padua</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="time">3:00 p.m.</div>
-            <div>
-              <strong>Recepción</strong>
-              <p class="section-text">Te esperamos en el salón ubicado en Libramiento de Alpanocan para continuar esta celebración.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-card">
-        <h2 class="section-title">Con la bendición de</h2>
-        <div class="grid details-grid">
-          <div class="detail">
-            <span class="label">Papás del novio</span>
-            <div class="value">Guillermo Torres Flores<br>y<br>Daria Rivera Jiménez</div>
-          </div>
-          <div class="detail">
-            <span class="label">Papás de la novia</span>
-            <div class="value">Arturo Milán Rosales<br>y<br>Zenaida Sánchez Rojas</div>
-          </div>
-          <div class="detail">
-            <span class="label">Padrinos de velación</span>
-            <div class="value">Germán Torres Rosales<br>y<br>Yolanda Mondragón Milán</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section id="galeria">
-      <div class="section-card">
-        <h2 class="section-title">Nuestra galería</h2>
-        <div class="grid gallery">
-          <div class="photo">
-            <img src="assets/foto1.jpeg" alt="Melanie y mamá" />
-            <span>Melanie y mamá</span>
-          </div>
-          <div class="photo">
-            <img src="assets/foto2.jpeg" alt="José, Zayr y Melanie" />
-            <span>José, Zayr y Melanie</span>
-          </div>
-          <div class="photo">
-            <img src="assets/foto3.jpeg" alt="Recuerdo especial en familia" />
-            <span>Recuerdo especial en familia</span>
-          </div>
-          <div class="photo">
-            <img src="assets/foto4.jpeg" alt="Un momento juntos" />
-            <span>Un momento juntos</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="ubicaciones">
-      <div class="section-card">
-        <h2 class="section-title">Ubicaciones</h2>
-        <div class="grid details-grid">
-          <div class="detail">
-            <span class="label">Parroquia</span>
-            <div class="value">Parroquia de San Antonio de Padua</div>
-            <div style="margin-top:14px;">
-              <a class="btn secondary" href="https://maps.app.goo.gl/iymbktV6umW1bisq9?g_st=iw" target="_blank" rel="noopener noreferrer">Ver ubicación de la parroquia</a>
-            </div>
-          </div>
-          <div class="detail">
-            <span class="label">Salón</span>
-            <div class="value">Libramiento de Alpanocan</div>
-            <div style="margin-top:14px;">
-              <a class="btn secondary" href="https://maps.app.goo.gl/nagX2eJvQLNkxvwZ8?g_st=iw" target="_blank" rel="noopener noreferrer">Ver ubicación del salón</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="container footer">
-    <p>Con cariño, José Manuel, Zayr y Melanie Sofía</p>
-  </footer>
-
-  <audio id="bgMusic" loop preload="auto">
-    <source src="assets/all-of-me.mp3" type="audio/mpeg" />
-  </audio>
-
-  <script>
-    const targetDate = new Date('2026-05-09T11:00:00-06:00').getTime();
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-
-    function updateCountdown(){
-      const now = new Date().getTime();
-      const diff = targetDate - now;
-      if(diff <= 0){
-        daysEl.textContent = '0';
-        hoursEl.textContent = '0';
-        minutesEl.textContent = '0';
-        secondsEl.textContent = '0';
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      daysEl.textContent = days;
-      hoursEl.textContent = hours;
-      minutesEl.textContent = minutes;
-      secondsEl.textContent = seconds;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    const overlay = document.getElementById('welcomeOverlay');
-    const enterBtn = document.getElementById('enterBtn');
-    const music = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    const statusEl = document.getElementById('musicStatus');
-    let isPlaying = false;
-    music.volume = 0.7;
-
-    async function startInvitation(){
-      overlay.style.display = 'none';
-      try{
-        await music.play();
-        isPlaying = true;
-        musicBtn.textContent = '❚❚ Pausar música';
-        statusEl.textContent = 'Reproduciendo';
-      }catch(e){
-        statusEl.textContent = 'Toca reproducir si tu navegador bloquea el audio';
-        musicBtn.textContent = '▶ Reproducir música';
-      }
-    }
-
-    enterBtn.addEventListener('click', startInvitation);
-
-    musicBtn.addEventListener('click', async () => {
-      try{
-        if(!isPlaying){
-          await music.play();
-          isPlaying = true;
-          musicBtn.textContent = '❚❚ Pausar música';
-          statusEl.textContent = 'Reproduciendo';
-        }else{
-          music.pause();
-          isPlaying = false;
-          musicBtn.textContent = '▶ Reproducir música';
-          statusEl.textContent = 'Pausada';
-        }
-      }catch(e){
-        statusEl.textContent = 'Tu navegador requiere interacción para reproducir audio';
-      }
-    });
-  </script>
 </body>
 </html>
