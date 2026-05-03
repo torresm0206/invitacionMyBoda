@@ -220,6 +220,14 @@
       transform: scale(1.04);
     }
 
+    .foto-boda{
+     object-position: 50% 20%;
+    }
+
+    .foto-bautizo{
+      object-position: 50% 30%;
+    }
+
     .story-overlay{
       position: absolute;
       inset: 0;
@@ -1311,6 +1319,12 @@
   }
 }
 
+.ampersand-inicial{
+    display: inline-block;
+    font-size: 0.9em;
+    line-height: 1;
+    color: var(--dorado-oscuro);
+  }
   </style>
 </head>
 <body>
@@ -1329,10 +1343,12 @@
   <section class="pantalla" id="pantalla1">
     <div class="tarjeta">
 
-      <div class="subtitulo">Nuestra boda y el bautizo de nuestra pequeña Sofi</div>
+      <div class="subtitulo">Nuestra boda y el bautizo de nuestra amada hija</div>
 
       <div class="nombres-principales">
-        Zayr <br> &amp; José Manuel
+        Zayr <br>
+        <span class="ampersand-inicial">&amp;</span><br>
+        José Manuel
       </div>
 
       <div class="sobre-box">
@@ -1353,7 +1369,7 @@
 
       <!-- PANEL 1: BODA -->
       <section class="story-panel">
-        <img src="assets/foto4.jpeg" alt="Foto de los novios" class="story-bg">
+        <img src="assets/foto4.jpeg" alt="Foto de los novios" class="story-bg foto-boda">
         <div class="story-overlay"></div>
         <div class="story-diagonal"></div>
 
@@ -1398,7 +1414,7 @@
 
       <!-- PANEL 2: BAUTIZO -->
       <section class="story-panel">
-        <img src="assets/foto1.jpeg" alt="Foto de Melanie Sofía" class="story-bg">
+        <img src="assets/foto_sofi.jpeg" alt="Foto de Melanie Sofía" class="story-bg foto-bautizo">
         <div class="story-overlay"></div>
         <div class="story-diagonal"></div>
 
@@ -1425,8 +1441,6 @@
       <div class="agr-corner agr-corner-bottom-right">✿</div>
 
       <div class="agr-header">
-        <div class="agr-kicker">Agradecimientos</div>
-        <div class="agr-cross">✞</div>
         <h2 class="agr-title">Con la bendición de:</h2>
         <div class="agr-ornament"></div>
       </div>
@@ -1503,7 +1517,7 @@
           <div class="detalles-evento-hora">A partir de las 3:00 p.m.</div>
           <div class="detalles-evento-titulo">Recepción</div>
           <div class="detalles-evento-lugar">
-            Salón en Libramiento de Alpanocan
+            Calle Libramiento, Alpanocan
           </div>
           <a class="detalles-boton" href="https://maps.app.goo.gl/nagX2eJvQLNkxvwZ8?g_st=iw" target="_blank" rel="noopener noreferrer">
             Ver ubicación del salón
@@ -1548,7 +1562,7 @@
 
       <p class="final-message">
         Tu presencia hará aún más especial la celebración de nuestra boda
-        y el bautizo de nuestra amada hija.
+        y el bautizo de nuestra pequeña Sofi.
       </p>
 
       <p class="final-biblia">
