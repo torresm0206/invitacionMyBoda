@@ -184,13 +184,13 @@
 
     /* ======================================================
        PANTALLA 2
-       CONTENEDOR DESPLAZABLE
     ====================================================== */
     #pantalla2{
       display: block;
       min-height: 100vh;
       padding: 0;
       background: #000;
+      position: relative;
     }
 
     .scroll-story{
@@ -221,7 +221,7 @@
     }
 
     .foto-boda{
-     object-position: 50% 20%;
+      object-position: 50% 20%;
     }
 
     .foto-bautizo{
@@ -308,6 +308,9 @@
       color: rgba(255,255,255,0.95);
     }
 
+    /* ======================================================
+       CUENTA REGRESIVA ORIGINAL (PANEL 1)
+    ====================================================== */
     .premium-countdown{
       position: absolute;
       left: 0;
@@ -320,6 +323,7 @@
       padding: 0 18px;
       text-align: center;
       color: white;
+      transition: opacity 0.2s ease;
     }
 
     .premium-count-item{
@@ -340,6 +344,37 @@
       font-size: 10px;
       letter-spacing: 1.6px;
       opacity: 0.94;
+    }
+
+    /* ======================================================
+       CUENTA REGRESIVA FIJA ARRIBA
+    ====================================================== */
+    .countdown-fixed{
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 95;
+      width: min(760px, calc(100% - 24px));
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 12px 16px;
+      text-align: center;
+      color: white;
+      background: rgba(20, 14, 10, 0.62);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+
+    .countdown-fixed.visible{
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* ======================================================
@@ -551,6 +586,448 @@
     }
 
     /* ======================================================
+       PANEL 3 REDISEÑADO: AGRADECIMIENTOS ELEGANTE
+    ====================================================== */
+    .agr-card{
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.70));
+      border: 1px solid rgba(166,125,69,0.16);
+      border-radius: 36px;
+      box-shadow: 0 18px 40px rgba(78,56,43,0.08);
+      backdrop-filter: blur(8px);
+      padding: 42px 32px 38px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .agr-corner{
+      position: absolute;
+      font-size: 24px;
+      color: rgba(166,125,69,0.22);
+      line-height: 1;
+    }
+
+    .agr-corner-top-left{ top: 18px; left: 18px; }
+    .agr-corner-top-right{ top: 18px; right: 18px; }
+    .agr-corner-bottom-left{ bottom: 18px; left: 18px; }
+    .agr-corner-bottom-right{ bottom: 18px; right: 18px; }
+
+    .agr-header{
+      margin-bottom: 30px;
+    }
+
+    .agr-kicker{
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      margin-bottom: 10px;
+    }
+
+    .agr-cross{
+      font-size: 20px;
+      color: var(--dorado-oscuro);
+      margin-bottom: 12px;
+    }
+
+    .agr-title{
+      margin: 0;
+      font-size: 40px;
+      line-height: 1.12;
+      color: var(--texto);
+      font-weight: normal;
+    }
+
+    .agr-ornament{
+      width: 110px;
+      height: 1px;
+      background: rgba(166,125,69,0.35);
+      margin: 22px auto 0;
+      position: relative;
+    }
+
+    .agr-ornament::before,
+    .agr-ornament::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(201,164,106,0.35);
+      transform: translateY(-50%);
+    }
+
+    .agr-ornament::before{ left: -14px; }
+    .agr-ornament::after{ right: -14px; }
+
+    .agr-parents-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .agr-person-card{
+      background: rgba(255,255,255,0.52);
+      border: 1px solid rgba(166,125,69,0.14);
+      border-radius: 26px;
+      padding: 22px 18px;
+      box-shadow: 0 8px 18px rgba(78,56,43,0.04);
+    }
+
+    .agr-role{
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      margin-bottom: 14px;
+    }
+
+    .agr-names{
+      font-size: 25px;
+      line-height: 1.35;
+      color: var(--texto);
+    }
+
+    .agr-names span,
+    .agr-padrinos-texto span{
+      color: var(--dorado-oscuro);
+      font-size: 18px;
+    }
+
+    .agr-divider{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 8px 0 24px;
+      color: var(--dorado-oscuro);
+      font-size: 18px;
+    }
+
+    .agr-padrinos-wrap{
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.50));
+      border: 1px solid rgba(166,125,69,0.15);
+      box-shadow: 0 10px 22px rgba(78,56,43,0.04);
+    }
+
+    .agr-role-wide{
+      margin-bottom: 14px;
+    }
+
+    .agr-padrinos-texto{
+      font-size: 30px;
+      line-height: 1.32;
+      color: var(--texto);
+    }
+
+    /* ======================================================
+       PANEL 4 REDISEÑADO: DETALLES DEL EVENTO
+    ====================================================== */
+    .detalles-card{
+      position: relative;
+      width: 100%;
+      max-width: 760px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.72));
+      border: 1px solid rgba(166,125,69,0.16);
+      border-radius: 36px;
+      box-shadow: 0 18px 40px rgba(78,56,43,0.08);
+      backdrop-filter: blur(8px);
+      padding: 42px 32px 38px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .detalles-corner{
+      position: absolute;
+      font-size: 24px;
+      color: rgba(166,125,69,0.22);
+      line-height: 1;
+    }
+
+    .detalles-corner-top-left{ top: 18px; left: 18px; }
+    .detalles-corner-top-right{ top: 18px; right: 18px; }
+    .detalles-corner-bottom-left{ bottom: 18px; left: 18px; }
+    .detalles-corner-bottom-right{ bottom: 18px; right: 18px; }
+
+    .detalles-header{
+      margin-bottom: 30px;
+    }
+
+    .detalles-kicker{
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      margin-bottom: 10px;
+    }
+
+    .detalles-cross{
+      font-size: 20px;
+      color: var(--dorado-oscuro);
+      margin-bottom: 12px;
+    }
+
+    .detalles-title{
+      margin: 0;
+      font-size: 40px;
+      line-height: 1.12;
+      color: var(--texto);
+      font-weight: normal;
+    }
+
+    .detalles-ornament{
+      width: 110px;
+      height: 1px;
+      background: rgba(166,125,69,0.35);
+      margin: 22px auto 0;
+      position: relative;
+    }
+
+    .detalles-ornament::before,
+    .detalles-ornament::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(201,164,106,0.35);
+      transform: translateY(-50%);
+    }
+
+    .detalles-ornament::before{ left: -14px; }
+    .detalles-ornament::after{ right: -14px; }
+
+    .detalles-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .detalles-evento-card{
+      background: rgba(255,255,255,0.56);
+      border: 1px solid rgba(166,125,69,0.14);
+      border-radius: 26px;
+      padding: 24px 18px 22px;
+      box-shadow: 0 8px 18px rgba(78,56,43,0.04);
+    }
+
+    .detalles-evento-icon{
+      font-size: 24px;
+      color: var(--dorado-oscuro);
+      margin-bottom: 12px;
+    }
+
+    .detalles-evento-hora{
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      margin-bottom: 10px;
+    }
+
+    .detalles-evento-titulo{
+      font-size: 28px;
+      line-height: 1.2;
+      color: var(--texto);
+      margin-bottom: 10px;
+    }
+
+    .detalles-evento-lugar{
+      font-size: 18px;
+      line-height: 1.45;
+      color: var(--texto);
+      margin-bottom: 18px;
+    }
+
+    .detalles-boton{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      background: linear-gradient(180deg, var(--dorado), var(--dorado-oscuro));
+      color: white;
+      font-size: 15px;
+      box-shadow: 0 10px 20px rgba(166,125,69,0.16);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .detalles-boton:hover{
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .detalles-dress-wrap{
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 22px 20px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.64), rgba(255,255,255,0.52));
+      border: 1px solid rgba(166,125,69,0.15);
+      box-shadow: 0 10px 22px rgba(78,56,43,0.04);
+    }
+
+    .detalles-dress-kicker{
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      margin-bottom: 12px;
+    }
+
+    .detalles-dress-texto{
+      font-size: 24px;
+      line-height: 1.38;
+      color: var(--texto);
+    }
+
+    /* ======================================================
+       PANEL 5: MENSAJE FINAL
+    ====================================================== */
+    .final-panel{
+      background:
+        radial-gradient(circle at top, rgba(201,164,106,0.16), transparent 28%),
+        linear-gradient(180deg, #fbf6f0 0%, #f1e6d8 100%);
+    }
+
+    .final-card{
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.74));
+      border: 1px solid rgba(166,125,69,0.16);
+      border-radius: 36px;
+      box-shadow: 0 18px 40px rgba(78,56,43,0.08);
+      backdrop-filter: blur(8px);
+      padding: 44px 34px 40px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .final-corner{
+      position: absolute;
+      font-size: 24px;
+      color: rgba(166,125,69,0.22);
+      line-height: 1;
+    }
+
+    .final-corner-top-left{ top: 18px; left: 18px; }
+    .final-corner-top-right{ top: 18px; right: 18px; }
+    .final-corner-bottom-left{ bottom: 18px; left: 18px; }
+    .final-corner-bottom-right{ bottom: 18px; right: 18px; }
+
+    .final-kicker{
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      margin-bottom: 10px;
+    }
+
+    .final-cross{
+      font-size: 20px;
+      color: var(--dorado-oscuro);
+      margin-bottom: 12px;
+    }
+
+    .final-title{
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.16;
+      font-weight: normal;
+      color: var(--texto);
+    }
+
+    .final-ornament{
+      width: 110px;
+      height: 1px;
+      background: rgba(166,125,69,0.35);
+      margin: 22px auto 26px;
+      position: relative;
+    }
+
+    .final-ornament::before,
+    .final-ornament::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(201,164,106,0.35);
+      transform: translateY(-50%);
+    }
+
+    .final-ornament::before{ left: -14px; }
+    .final-ornament::after{ right: -14px; }
+
+    .final-message{
+      margin: 0 0 18px 0;
+      font-size: 24px;
+      line-height: 1.5;
+      color: var(--texto);
+    }
+
+    .final-biblia{
+      margin: 26px 0 8px 0;
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--texto);
+      font-style: italic;
+    }
+
+    .final-cita{
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      margin-bottom: 24px;
+    }
+
+    .final-divider{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 8px 0 22px;
+      color: var(--dorado-oscuro);
+      font-size: 18px;
+    }
+
+    .final-signature{
+      font-size: 26px;
+      line-height: 1.5;
+      color: var(--texto);
+    }
+
+    .final-signature strong{
+      font-weight: normal;
+      color: var(--dorado-oscuro);
+    }
+
+    .ampersand-inicial{
+      display: inline-block;
+      font-size: 0.9em;
+      line-height: 1;
+      color: var(--dorado-oscuro);
+    }
+
+    /* ======================================================
        RESPONSIVE
     ====================================================== */
     @media (max-width: 700px){
@@ -635,6 +1112,13 @@
         letter-spacing: 1px;
       }
 
+      .countdown-fixed{
+        top: 62px;
+        width: calc(100% - 16px);
+        padding: 10px 10px;
+        border-radius: 18px;
+      }
+
       .bautizo-content{
         justify-content: flex-end;
         padding-top: 110px;
@@ -664,14 +1148,20 @@
         padding: 70px 18px;
       }
 
-      .plain-card{
+      .plain-title,
+      .agr-title,
+      .detalles-title,
+      .final-title{
+        font-size: 28px;
+      }
+
+      .plain-card,
+      .agr-card,
+      .detalles-card,
+      .final-card{
         max-width: 100%;
         padding: 28px 18px;
         border-radius: 28px;
-      }
-
-      .plain-title{
-        font-size: 28px;
       }
 
       .bendicion-texto{
@@ -682,661 +1172,145 @@
         font-size: 18px;
       }
 
-      .evento-titulo{
-        font-size: 23px;
+      .agr-corner,
+      .detalles-corner,
+      .final-corner{
+        font-size: 18px;
       }
 
-      .evento-lugar{
+      .agr-kicker,
+      .detalles-kicker,
+      .final-kicker{
+        font-size: 11px;
+        letter-spacing: 3px;
+      }
+
+      .agr-cross,
+      .detalles-cross,
+      .final-cross{
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .agr-parents-grid,
+      .detalles-grid{
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .agr-person-card,
+      .detalles-evento-card{
+        border-radius: 22px;
+        padding: 18px 14px;
+      }
+
+      .agr-role{
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+
+      .agr-names{
+        font-size: 20px;
+      }
+
+      .agr-names span,
+      .agr-padrinos-texto span{
         font-size: 16px;
       }
 
-      .boton-mapa{
-        min-width: 100%;
-        font-size: 15px;
+      .agr-padrinos-wrap{
+        padding: 20px 14px;
+        border-radius: 22px;
+      }
+
+      .agr-padrinos-texto{
+        font-size: 23px;
+      }
+
+      .detalles-evento-icon{
+        font-size: 20px;
+      }
+
+      .detalles-evento-hora{
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+
+      .detalles-evento-titulo{
+        font-size: 22px;
+      }
+
+      .detalles-evento-lugar{
+        font-size: 16px;
+      }
+
+      .detalles-boton{
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .detalles-dress-wrap{
+        padding: 18px 14px;
+        border-radius: 22px;
+      }
+
+      .detalles-dress-kicker{
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+
+      .detalles-dress-texto{
+        font-size: 18px;
+      }
+
+      .final-message{
+        font-size: 18px;
+      }
+
+      .final-biblia{
+        font-size: 17px;
+      }
+
+      .final-cita{
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+
+      .final-signature{
+        font-size: 20px;
       }
     }
-
-
-    /* ======================================================
-   PANEL 3 REDISEÑADO: AGRADECIMIENTOS ELEGANTE
-====================================================== */
-.agr-card{
-  position: relative;
-  width: 100%;
-  max-width: 720px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.70));
-  border: 1px solid rgba(166,125,69,0.16);
-  border-radius: 36px;
-  box-shadow: 0 18px 40px rgba(78,56,43,0.08);
-  backdrop-filter: blur(8px);
-  padding: 42px 32px 38px;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Esquinas decorativas */
-.agr-corner{
-  position: absolute;
-  font-size: 24px;
-  color: rgba(166,125,69,0.22);
-  line-height: 1;
-}
-
-.agr-corner-top-left{ top: 18px; left: 18px; }
-.agr-corner-top-right{ top: 18px; right: 18px; }
-.agr-corner-bottom-left{ bottom: 18px; left: 18px; }
-.agr-corner-bottom-right{ bottom: 18px; right: 18px; }
-
-/* Encabezado */
-.agr-header{
-  margin-bottom: 30px;
-}
-
-.agr-kicker{
-  font-size: 13px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  margin-bottom: 10px;
-}
-
-.agr-cross{
-  font-size: 20px;
-  color: var(--dorado-oscuro);
-  margin-bottom: 12px;
-}
-
-.agr-title{
-  margin: 0;
-  font-size: 40px;
-  line-height: 1.12;
-  color: var(--texto);
-  font-weight: normal;
-}
-
-.agr-ornament{
-  width: 110px;
-  height: 1px;
-  background: rgba(166,125,69,0.35);
-  margin: 22px auto 0;
-  position: relative;
-}
-
-.agr-ornament::before,
-.agr-ornament::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(201,164,106,0.35);
-  transform: translateY(-50%);
-}
-
-.agr-ornament::before{ left: -14px; }
-.agr-ornament::after{ right: -14px; }
-
-/* Tarjetas de padres */
-.agr-parents-grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  margin-bottom: 28px;
-}
-
-.agr-person-card{
-  background: rgba(255,255,255,0.52);
-  border: 1px solid rgba(166,125,69,0.14);
-  border-radius: 26px;
-  padding: 22px 18px;
-  box-shadow: 0 8px 18px rgba(78,56,43,0.04);
-}
-
-.agr-role{
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  margin-bottom: 14px;
-}
-
-.agr-names{
-  font-size: 25px;
-  line-height: 1.35;
-  color: var(--texto);
-}
-
-.agr-names span,
-.agr-padrinos-texto span{
-  color: var(--dorado-oscuro);
-  font-size: 18px;
-}
-
-/* Separador */
-.agr-divider{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 8px 0 24px;
-  color: var(--dorado-oscuro);
-  font-size: 18px;
-}
-
-/* Bloque de padrinos */
-.agr-padrinos-wrap{
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 24px 20px;
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.50));
-  border: 1px solid rgba(166,125,69,0.15);
-  box-shadow: 0 10px 22px rgba(78,56,43,0.04);
-}
-
-.agr-role-wide{
-  margin-bottom: 14px;
-}
-
-.agr-padrinos-texto{
-  font-size: 30px;
-  line-height: 1.32;
-  color: var(--texto);
-}
-
-/* Responsive */
-@media (max-width: 700px){
-  .agr-card{
-    max-width: 100%;
-    padding: 30px 18px 28px;
-    border-radius: 28px;
-  }
-
-  .agr-corner{
-    font-size: 18px;
-  }
-
-  .agr-kicker{
-    font-size: 11px;
-    letter-spacing: 3px;
-  }
-
-  .agr-cross{
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .agr-title{
-    font-size: 28px;
-  }
-
-  .agr-parents-grid{
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .agr-person-card{
-    border-radius: 22px;
-    padding: 18px 14px;
-  }
-
-  .agr-role{
-    font-size: 11px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-  }
-
-  .agr-names{
-    font-size: 20px;
-  }
-
-  .agr-names span,
-  .agr-padrinos-texto span{
-    font-size: 16px;
-  }
-
-  .agr-padrinos-wrap{
-    padding: 20px 14px;
-    border-radius: 22px;
-  }
-
-  .agr-padrinos-texto{
-    font-size: 23px;
-  }
-}
-/* ======================================================
-   PANEL 4 REDISEÑADO: DETALLES DEL EVENTO
-====================================================== */
-.detalles-card{
-  position: relative;
-  width: 100%;
-  max-width: 760px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.72));
-  border: 1px solid rgba(166,125,69,0.16);
-  border-radius: 36px;
-  box-shadow: 0 18px 40px rgba(78,56,43,0.08);
-  backdrop-filter: blur(8px);
-  padding: 42px 32px 38px;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Esquinas decorativas */
-.detalles-corner{
-  position: absolute;
-  font-size: 24px;
-  color: rgba(166,125,69,0.22);
-  line-height: 1;
-}
-
-.detalles-corner-top-left{ top: 18px; left: 18px; }
-.detalles-corner-top-right{ top: 18px; right: 18px; }
-.detalles-corner-bottom-left{ bottom: 18px; left: 18px; }
-.detalles-corner-bottom-right{ bottom: 18px; right: 18px; }
-
-/* Encabezado */
-.detalles-header{
-  margin-bottom: 30px;
-}
-
-.detalles-kicker{
-  font-size: 13px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  margin-bottom: 10px;
-}
-
-.detalles-cross{
-  font-size: 20px;
-  color: var(--dorado-oscuro);
-  margin-bottom: 12px;
-}
-
-.detalles-title{
-  margin: 0;
-  font-size: 40px;
-  line-height: 1.12;
-  color: var(--texto);
-  font-weight: normal;
-}
-
-.detalles-ornament{
-  width: 110px;
-  height: 1px;
-  background: rgba(166,125,69,0.35);
-  margin: 22px auto 0;
-  position: relative;
-}
-
-.detalles-ornament::before,
-.detalles-ornament::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(201,164,106,0.35);
-  transform: translateY(-50%);
-}
-
-.detalles-ornament::before{ left: -14px; }
-.detalles-ornament::after{ right: -14px; }
-
-/* Grid de eventos */
-.detalles-grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  margin-bottom: 28px;
-}
-
-.detalles-evento-card{
-  background: rgba(255,255,255,0.56);
-  border: 1px solid rgba(166,125,69,0.14);
-  border-radius: 26px;
-  padding: 24px 18px 22px;
-  box-shadow: 0 8px 18px rgba(78,56,43,0.04);
-}
-
-.detalles-evento-icon{
-  font-size: 24px;
-  color: var(--dorado-oscuro);
-  margin-bottom: 12px;
-}
-
-.detalles-evento-hora{
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  margin-bottom: 10px;
-}
-
-.detalles-evento-titulo{
-  font-size: 28px;
-  line-height: 1.2;
-  color: var(--texto);
-  margin-bottom: 10px;
-}
-
-.detalles-evento-lugar{
-  font-size: 18px;
-  line-height: 1.45;
-  color: var(--texto);
-  margin-bottom: 18px;
-}
-
-.detalles-boton{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 12px 18px;
-  border-radius: 999px;
-  text-decoration: none;
-  background: linear-gradient(180deg, var(--dorado), var(--dorado-oscuro));
-  color: white;
-  font-size: 15px;
-  box-shadow: 0 10px 20px rgba(166,125,69,0.16);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.detalles-boton:hover{
-  transform: translateY(-1px);
-  opacity: 0.96;
-}
-
-/* Dress code */
-.detalles-dress-wrap{
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 22px 20px;
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.64), rgba(255,255,255,0.52));
-  border: 1px solid rgba(166,125,69,0.15);
-  box-shadow: 0 10px 22px rgba(78,56,43,0.04);
-}
-
-.detalles-dress-kicker{
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  margin-bottom: 12px;
-}
-
-.detalles-dress-texto{
-  font-size: 24px;
-  line-height: 1.38;
-  color: var(--texto);
-}
-
-/* Responsive */
-@media (max-width: 700px){
-  .detalles-card{
-    max-width: 100%;
-    padding: 30px 18px 28px;
-    border-radius: 28px;
-  }
-
-  .detalles-corner{
-    font-size: 18px;
-  }
-
-  .detalles-kicker{
-    font-size: 11px;
-    letter-spacing: 3px;
-  }
-
-  .detalles-cross{
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .detalles-title{
-    font-size: 28px;
-  }
-
-  .detalles-grid{
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .detalles-evento-card{
-    border-radius: 22px;
-    padding: 18px 14px 18px;
-  }
-
-  .detalles-evento-icon{
-    font-size: 20px;
-  }
-
-  .detalles-evento-hora{
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
-
-  .detalles-evento-titulo{
-    font-size: 22px;
-  }
-
-  .detalles-evento-lugar{
-    font-size: 16px;
-  }
-
-  .detalles-boton{
-    width: 100%;
-    font-size: 14px;
-  }
-
-  .detalles-dress-wrap{
-    padding: 18px 14px;
-    border-radius: 22px;
-  }
-
-  .detalles-dress-kicker{
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
-
-  .detalles-dress-texto{
-    font-size: 18px;
-  }
-}
-
-
-/* ======================================================
-   PANEL 5: MENSAJE FINAL
-====================================================== */
-.final-panel{
-  background:
-    radial-gradient(circle at top, rgba(201,164,106,0.16), transparent 28%),
-    linear-gradient(180deg, #fbf6f0 0%, #f1e6d8 100%);
-}
-
-.final-card{
-  position: relative;
-  width: 100%;
-  max-width: 720px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.74));
-  border: 1px solid rgba(166,125,69,0.16);
-  border-radius: 36px;
-  box-shadow: 0 18px 40px rgba(78,56,43,0.08);
-  backdrop-filter: blur(8px);
-  padding: 44px 34px 40px;
-  text-align: center;
-  overflow: hidden;
-}
-
-.final-corner{
-  position: absolute;
-  font-size: 24px;
-  color: rgba(166,125,69,0.22);
-  line-height: 1;
-}
-
-.final-corner-top-left{ top: 18px; left: 18px; }
-.final-corner-top-right{ top: 18px; right: 18px; }
-.final-corner-bottom-left{ bottom: 18px; left: 18px; }
-.final-corner-bottom-right{ bottom: 18px; right: 18px; }
-
-.final-kicker{
-  font-size: 13px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  margin-bottom: 10px;
-}
-
-.final-cross{
-  font-size: 20px;
-  color: var(--dorado-oscuro);
-  margin-bottom: 12px;
-}
-
-.final-title{
-  margin: 0;
-  font-size: 38px;
-  line-height: 1.16;
-  font-weight: normal;
-  color: var(--texto);
-}
-
-.final-ornament{
-  width: 110px;
-  height: 1px;
-  background: rgba(166,125,69,0.35);
-  margin: 22px auto 26px;
-  position: relative;
-}
-
-.final-ornament::before,
-.final-ornament::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(201,164,106,0.35);
-  transform: translateY(-50%);
-}
-
-.final-ornament::before{ left: -14px; }
-.final-ornament::after{ right: -14px; }
-
-.final-message{
-  margin: 0 0 18px 0;
-  font-size: 24px;
-  line-height: 1.5;
-  color: var(--texto);
-}
-
-.final-biblia{
-  margin: 26px 0 8px 0;
-  font-size: 22px;
-  line-height: 1.5;
-  color: var(--texto);
-  font-style: italic;
-}
-
-.final-cita{
-  font-size: 14px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  margin-bottom: 24px;
-}
-
-.final-divider{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 8px 0 22px;
-  color: var(--dorado-oscuro);
-  font-size: 18px;
-}
-
-.final-signature{
-  font-size: 26px;
-  line-height: 1.5;
-  color: var(--texto);
-}
-
-.final-signature strong{
-  font-weight: normal;
-  color: var(--dorado-oscuro);
-}
-
-/* Responsive */
-@media (max-width: 700px){
-  .final-card{
-    max-width: 100%;
-    padding: 32px 18px 30px;
-    border-radius: 28px;
-  }
-
-  .final-corner{
-    font-size: 18px;
-  }
-
-  .final-kicker{
-    font-size: 11px;
-    letter-spacing: 3px;
-  }
-
-  .final-cross{
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .final-title{
-    font-size: 28px;
-  }
-
-  .final-message{
-    font-size: 18px;
-  }
-
-  .final-biblia{
-    font-size: 17px;
-  }
-
-  .final-cita{
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
-
-  .final-signature{
-    font-size: 20px;
-  }
-}
-
-.ampersand-inicial{
-    display: inline-block;
-    font-size: 0.9em;
-    line-height: 1;
-    color: var(--dorado-oscuro);
-  }
   </style>
 </head>
 <body>
 
-  <audio id="musica" loop>
-    <source src="assets/all-of-me.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="musica" loop></audio>
 
   <div class="barra-musica oculto" id="barraMusica">
     <div class="musica-contenido">
       <button class="boton-musica" id="btnMusica">❚❚ Pausar música</button>
       <div class="estado-musica" id="estadoMusica">Reproduciendo</div>
+    </div>
+  </div>
+
+  <!-- Cuenta regresiva fija superior -->
+  <div class="countdown-fixed oculto" id="countdownFixed">
+    <div class="premium-count-item">
+      <div class="premium-count-num" id="dias-fixed">0</div>
+      <div class="premium-count-label">DÍAS</div>
+    </div>
+    <div class="premium-count-item">
+      <div class="premium-count-num" id="horas-fixed">0</div>
+      <div class="premium-count-label">HORAS</div>
+    </div>
+    <div class="premium-count-item">
+      <div class="premium-count-num" id="minutos-fixed">0</div>
+      <div class="premium-count-label">MINUTOS</div>
+    </div>
+    <div class="premium-count-item">
+      <div class="premium-count-num" id="segundos-fixed">0</div>
+      <div class="premium-count-label">SEGUNDOS</div>
     </div>
   </div>
 
@@ -1389,7 +1363,8 @@
 
         <div class="scroll-tip">Desliza hacia abajo</div>
 
-        <div class="premium-countdown">
+        <!-- Cuenta regresiva original -->
+        <div class="premium-countdown" id="countdownOriginal">
           <div class="premium-count-item">
             <div class="premium-count-num" id="dias">0</div>
             <div class="premium-count-label">DÍAS</div>
@@ -1431,162 +1406,161 @@
       </section>
 
       <!-- PANEL 3: AGRADECIMIENTOS -->
-<section class="story-panel plain-panel">
-  <div class="plain-content">
-    <div class="agr-card">
+      <section class="story-panel plain-panel">
+        <div class="plain-content">
+          <div class="agr-card">
 
-      <div class="agr-corner agr-corner-top-left">✿</div>
-      <div class="agr-corner agr-corner-top-right">✿</div>
-      <div class="agr-corner agr-corner-bottom-left">✿</div>
-      <div class="agr-corner agr-corner-bottom-right">✿</div>
+            <div class="agr-corner agr-corner-top-left">✿</div>
+            <div class="agr-corner agr-corner-top-right">✿</div>
+            <div class="agr-corner agr-corner-bottom-left">✿</div>
+            <div class="agr-corner agr-corner-bottom-right">✿</div>
 
-      <div class="agr-header">
-        <h2 class="agr-title">Con la bendición de:</h2>
-        <div class="agr-ornament"></div>
-      </div>
+            <div class="agr-header">
+              <h2 class="agr-title">Con la bendición de:</h2>
+              <div class="agr-ornament"></div>
+            </div>
 
-      <div class="agr-parents-grid">
-        <div class="agr-person-card">
-          <div class="agr-role">Papás del novio</div>
-          <div class="agr-names">
-            Guillermo Torres Flores<br>
-            <span>y</span><br>
-            Daria Rivera Jiménez
+            <div class="agr-parents-grid">
+              <div class="agr-person-card">
+                <div class="agr-role">Papás del novio</div>
+                <div class="agr-names">
+                  Guillermo Torres Flores<br>
+                  <span>y</span><br>
+                  Daria Rivera Jiménez
+                </div>
+              </div>
+
+              <div class="agr-person-card">
+                <div class="agr-role">Papás de la novia</div>
+                <div class="agr-names">
+                  Arturo Milán Rosales<br>
+                  <span>y</span><br>
+                  Zenaida Sánchez Rojas
+                </div>
+              </div>
+            </div>
+
+            <div class="agr-divider">
+              <span>✦</span>
+            </div>
+
+            <div class="agr-padrinos-wrap">
+              <div class="agr-role agr-role-wide">Padrinos de velación</div>
+              <div class="agr-padrinos-texto">
+                Germán Torres Rosales<br>
+                <span>y</span><br>
+                Yolanda Mondragón Milán
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <div class="agr-person-card">
-          <div class="agr-role">Papás de la novia</div>
-          <div class="agr-names">
-            Arturo Milán Rosales<br>
-            <span>y</span><br>
-            Zenaida Sánchez Rojas
-          </div>
-        </div>
-      </div>
-
-      <div class="agr-divider">
-        <span>✦</span>
-      </div>
-
-      <div class="agr-padrinos-wrap">
-        <div class="agr-role agr-role-wide">Padrinos de velación</div>
-        <div class="agr-padrinos-texto">
-          Germán Torres Rosales<br>
-          <span>y</span><br>
-          Yolanda Mondragón Milán
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
 
       <!-- PANEL 4: FECHA, CEREMONIA Y UBICACIONES -->
-<section class="story-panel plain-panel alt">
-  <div class="plain-content">
-    <div class="detalles-card">
+      <section class="story-panel plain-panel alt">
+        <div class="plain-content">
+          <div class="detalles-card">
 
-      <div class="detalles-corner detalles-corner-top-left">❀</div>
-      <div class="detalles-corner detalles-corner-top-right">❀</div>
-      <div class="detalles-corner detalles-corner-bottom-left">❀</div>
-      <div class="detalles-corner detalles-corner-bottom-right">❀</div>
+            <div class="detalles-corner detalles-corner-top-left">❀</div>
+            <div class="detalles-corner detalles-corner-top-right">❀</div>
+            <div class="detalles-corner detalles-corner-bottom-left">❀</div>
+            <div class="detalles-corner detalles-corner-bottom-right">❀</div>
 
-      <div class="detalles-header">
-        <div class="detalles-kicker">Detalles del evento</div>
-        <div class="detalles-cross">✞</div>
-        <h2 class="detalles-title">Sábado 09 de mayo de 2026</h2>
-        <div class="detalles-ornament"></div>
-      </div>
+            <div class="detalles-header">
+              <div class="detalles-kicker">Detalles del evento</div>
+              <div class="detalles-cross">✞</div>
+              <h2 class="detalles-title">Sábado 09 de mayo de 2026</h2>
+              <div class="detalles-ornament"></div>
+            </div>
 
-      <div class="detalles-grid">
-        <div class="detalles-evento-card">
-          <div class="detalles-evento-icon">⛪</div>
-          <div class="detalles-evento-hora">11:00 a.m.</div>
-          <div class="detalles-evento-titulo">Misa</div>
-          <div class="detalles-evento-lugar">
-            Parroquia de San Antonio de Padua en Alpanocan
+            <div class="detalles-grid">
+              <div class="detalles-evento-card">
+                <div class="detalles-evento-icon">⛪</div>
+                <div class="detalles-evento-hora">11:00 a.m.</div>
+                <div class="detalles-evento-titulo">Misa</div>
+                <div class="detalles-evento-lugar">
+                  Parroquia de San Antonio de Padua en Alpanocan
+                </div>
+                <a class="detalles-boton" href="https://maps.app.goo.gl/iymbktV6umW1bisq9?g_st=iw" target="_blank" rel="noopener noreferrer">
+                  Ver ubicación de la parroquia
+                </a>
+              </div>
+
+              <div class="detalles-evento-card">
+                <div class="detalles-evento-icon">✦</div>
+                <div class="detalles-evento-hora">A partir de las 3:00 p.m.</div>
+                <div class="detalles-evento-titulo">Recepción</div>
+                <div class="detalles-evento-lugar">
+                  Calle Libramiento, Alpanocan
+                </div>
+                <a class="detalles-boton" href="https://maps.app.goo.gl/nagX2eJvQLNkxvwZ8?g_st=iw" target="_blank" rel="noopener noreferrer">
+                  Ver ubicación del salón
+                </a>
+              </div>
+            </div>
+
+            <div class="detalles-dress-wrap">
+              <div class="detalles-dress-kicker">Código de vestimenta</div>
+              <div class="detalles-dress-texto">
+                Queremos que disfrutes este día con nosotros, así que ven como mejor te sientas, pero eso sí, con mucha alegría y ganas de bailar.
+              </div>
+            </div>
+
           </div>
-          <a class="detalles-boton" href="https://maps.app.goo.gl/iymbktV6umW1bisq9?g_st=iw" target="_blank" rel="noopener noreferrer">
-            Ver ubicación de la parroquia
-          </a>
         </div>
+      </section>
 
-        <div class="detalles-evento-card">
-          <div class="detalles-evento-icon">✦</div>
-          <div class="detalles-evento-hora">A partir de las 3:00 p.m.</div>
-          <div class="detalles-evento-titulo">Recepción</div>
-          <div class="detalles-evento-lugar">
-            Calle Libramiento, Alpanocan
+      <!-- PANEL 5: MENSAJE FINAL -->
+      <section class="story-panel plain-panel final-panel">
+        <div class="plain-content">
+          <div class="final-card">
+
+            <div class="final-corner final-corner-top-left">❀</div>
+            <div class="final-corner final-corner-top-right">❀</div>
+            <div class="final-corner final-corner-bottom-left">❀</div>
+            <div class="final-corner final-corner-bottom-right">❀</div>
+
+            <div class="final-kicker">Gracias</div>
+            <div class="final-cross">✞</div>
+
+            <h2 class="final-title">
+              Gracias por ser parte de este día tan especial
+            </h2>
+
+            <div class="final-ornament"></div>
+
+            <p class="final-message">
+              Con inmensa alegría en el corazón, agradecemos tu compañía en este momento
+              que une nuestro amor, nuestra fe y nuestra familia.
+            </p>
+
+            <p class="final-message">
+              Tu presencia hará aún más especial la celebración de nuestra boda
+              y el bautizo de nuestra pequeña Sofi.
+            </p>
+
+            <p class="final-biblia">
+              “Y ahora permanecen la fe, la esperanza y el amor, estos tres;
+              pero el mayor de ellos es el amor.”
+            </p>
+
+            <div class="final-cita">
+              1 Corintios 13:13
+            </div>
+
+            <div class="final-divider">
+              <span>✦</span>
+            </div>
+
+            <div class="final-signature">
+              Con cariño,<br>
+              <strong>Zayr, José Manuel y Melanie Sofía</strong>
+            </div>
+
           </div>
-          <a class="detalles-boton" href="https://maps.app.goo.gl/nagX2eJvQLNkxvwZ8?g_st=iw" target="_blank" rel="noopener noreferrer">
-            Ver ubicación del salón
-          </a>
         </div>
-      </div>
-
-      <div class="detalles-dress-wrap">
-        <div class="detalles-dress-kicker">Código de vestimenta</div>
-        <div class="detalles-dress-texto">
-          Queremos que disfrutes este día con nosotros, así que ven como mejor te sientas, pero eso si, con mucha alegría y ganas de bailar.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PANEL 5: MENSAJE FINAL -->
-<section class="story-panel plain-panel final-panel">
-  <div class="plain-content">
-    <div class="final-card">
-
-      <div class="final-corner final-corner-top-left">❀</div>
-      <div class="final-corner final-corner-top-right">❀</div>
-      <div class="final-corner final-corner-bottom-left">❀</div>
-      <div class="final-corner final-corner-bottom-right">❀</div>
-
-      <div class="final-kicker">Gracias</div>
-      <div class="final-cross">✞</div>
-
-      <h2 class="final-title">
-        Gracias por ser parte de este día tan especial
-      </h2>
-
-      <div class="final-ornament"></div>
-
-      <p class="final-message">
-        Con inmensa alegría en el corazón, agradecemos tu compañía en este momento
-        que une nuestro amor, nuestra fe y nuestra familia.
-      </p>
-
-      <p class="final-message">
-        Tu presencia hará aún más especial la celebración de nuestra boda
-        y el bautizo de nuestra pequeña Sofi.
-      </p>
-
-      <p class="final-biblia">
-        “Y ahora permanecen la fe, la esperanza y el amor, estos tres;
-        pero el mayor de ellos es el amor.”
-      </p>
-
-      <div class="final-cita">
-        1 Corintios 13:13
-      </div>
-
-      <div class="final-divider">
-        <span>✦</span>
-      </div>
-
-      <div class="final-signature">
-        Con cariño,<br>
-        <strong>Zayr, José Manuel y Melanie Sofía</strong>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+      </section>
 
     </main>
   </section>
@@ -1597,6 +1571,11 @@
     const btnAbrir = document.getElementById("btnAbrir");
 
     const musica = document.getElementById("musica");
+    const canciones = [
+      "assets/MarryYou.mp3",
+      "assets/all-of-me.mp3"
+    ];
+
     const barraMusica = document.getElementById("barraMusica");
     const btnMusica = document.getElementById("btnMusica");
     const estadoMusica = document.getElementById("estadoMusica");
@@ -1605,6 +1584,14 @@
     const horas = document.getElementById("horas");
     const minutos = document.getElementById("minutos");
     const segundos = document.getElementById("segundos");
+
+    const diasFixed = document.getElementById("dias-fixed");
+    const horasFixed = document.getElementById("horas-fixed");
+    const minutosFixed = document.getElementById("minutos-fixed");
+    const segundosFixed = document.getElementById("segundos-fixed");
+
+    const countdownOriginal = document.getElementById("countdownOriginal");
+    const countdownFixed = document.getElementById("countdownFixed");
 
     let musicaActiva = false;
 
@@ -1619,6 +1606,11 @@
         horas.textContent = "0";
         minutos.textContent = "0";
         segundos.textContent = "0";
+
+        diasFixed.textContent = "0";
+        horasFixed.textContent = "0";
+        minutosFixed.textContent = "0";
+        segundosFixed.textContent = "0";
         return;
       }
 
@@ -1631,6 +1623,32 @@
       horas.textContent = h;
       minutos.textContent = m;
       segundos.textContent = s;
+
+      diasFixed.textContent = d;
+      horasFixed.textContent = h;
+      minutosFixed.textContent = m;
+      segundosFixed.textContent = s;
+    }
+
+    function actualizarCountdownSticky() {
+      if (pantalla2.classList.contains("oculto")) {
+        countdownFixed.classList.add("oculto");
+        countdownFixed.classList.remove("visible");
+        return;
+      }
+
+      const rect = countdownOriginal.getBoundingClientRect();
+      const stickyTop = window.innerWidth <= 700 ? 62 : 70;
+
+      if (rect.top <= stickyTop) {
+        countdownFixed.classList.remove("oculto");
+        countdownFixed.classList.add("visible");
+        countdownOriginal.style.opacity = "0";
+      } else {
+        countdownFixed.classList.add("oculto");
+        countdownFixed.classList.remove("visible");
+        countdownOriginal.style.opacity = "1";
+      }
     }
 
     actualizarCuenta();
@@ -1656,15 +1674,23 @@
       estadoMusica.textContent = "Pausada";
     }
 
+    function elegirCancionAleatoria() {
+      const indice = Math.floor(Math.random() * canciones.length);
+      musica.src = canciones[indice];
+      musica.load();
+    }
+
     btnAbrir.addEventListener("click", async function () {
       pantalla1.classList.add("oculto");
       pantalla2.classList.remove("oculto");
       barraMusica.classList.remove("oculto");
 
+      elegirCancionAleatoria();
       musica.volume = 0.7;
       await reproducirMusica();
 
       window.scrollTo({ top: 0, behavior: "auto" });
+      setTimeout(actualizarCountdownSticky, 80);
     });
 
     btnMusica.addEventListener("click", async function () {
@@ -1686,6 +1712,9 @@
         pausarMusica();
       }
     });
+
+    window.addEventListener("scroll", actualizarCountdownSticky);
+    window.addEventListener("resize", actualizarCountdownSticky);
   </script>
 
 </body>
